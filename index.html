@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ada — AI Speaking Examiner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="ticket-frame">
+
+  <!-- Header: exam ticket masthead -->
+  <header class="masthead">
+    <div class="masthead-left">
+      <span class="eyebrow">Spoken English Assessment</span>
+      <h1 class="wordmark">Ada</h1>
+    </div>
+    <div class="masthead-right">
+      <div id="statusChip" class="status-chip status-idle">
+        <span class="status-dot"></span>
+        <span id="statusText">Not started</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Lesson upload — shown before the session starts -->
+  <section id="uploadCard" class="card upload-card">
+    <div class="card-label">Phase 3 material <span class="optional">— optional</span></div>
+    <p class="card-hint">Upload a short reading passage (.txt or .pdf). Ada will ask you to discuss it near the end of the test.</p>
+    <label for="lessonFile" class="dropzone" id="dropzone">
+      <div class="dropzone-icon">＋</div>
+      <div class="dropzone-text">
+        <strong>Choose a file</strong> or drag it here
+        <div class="dropzone-sub" id="fileName">No file selected</div>
+      </div>
+    </label>
+    <input type="file" id="lessonFile" accept=".txt,.pdf" hidden />
+  </section>
+
+  <!-- Main exam stage -->
+  <section class="card stage-card">
+
+    <!-- Voice orb -->
+    <div class="orb-wrap">
+      <div id="orb" class="orb">
+        <div class="orb-ring ring-1"></div>
+        <div class="orb-ring ring-2"></div>
+        <div class="orb-ring ring-3"></div>
+        <div class="orb-core"></div>
+      </div>
+      <div id="statusLine" class="status-line">Press start to begin your 5-minute exam</div>
+    </div>
+
+    <!-- Phase ticket strip -->
+    <div class="phase-strip" id="phaseStrip">
+      <div class="phase-stub" data-phase="1">
+        <span class="phase-num">01</span>
+        <span class="phase-name">Vocabulary</span>
+        <span class="phase-time" data-timer="1">2:00</span>
+      </div>
+      <div class="perforation"></div>
+      <div class="phase-stub" data-phase="2">
+        <span class="phase-num">02</span>
+        <span class="phase-name">Grammar</span>
+        <span class="phase-time" data-timer="2">1:30</span>
+      </div>
+      <div class="perforation"></div>
+      <div class="phase-stub" data-phase="3">
+        <span class="phase-num">03</span>
+        <span class="phase-name">Text Analysis</span>
+        <span class="phase-time" data-timer="3">1:30</span>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="startBtn" class="btn-start">Start Interview</button>
+      <button id="stopBtn" class="btn-stop" hidden>End Session</button>
+    </div>
+
+    <p class="mic-note" id="micNote">Uses your microphone. Works best in Chrome or Edge.</p>
+  </section>
+
+  <!-- Transcript -->
+  <section class="card transcript-card">
+    <div class="card-label">Transcript</div>
+    <div id="transcript" class="transcript"></div>
+  </section>
+
+</div>
+
+<!-- Final report modal -->
+<div id="reportOverlay" class="report-overlay" hidden>
+  <div class="report-card">
+    <div class="card-label">Final Score Report</div>
+    <div id="reportBody" class="report-body"></div>
+    <button id="closeReportBtn" class="btn-secondary">Close</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

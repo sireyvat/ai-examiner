@@ -1,0 +1,21 @@
+{
+  "name": "ai-english-examiner",
+  "version": "1.0.0",
+  "description": "Voice-to-voice AI English Speaking Examiner (browser STT/TTS + LLM backend)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^2.0.0",
+    "pdf-parse": "^1.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
